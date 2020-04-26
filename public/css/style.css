@@ -1,0 +1,106 @@
+/*GENERAL*/
+body
+{
+    font-family: 'Lato', sans-serif;
+    background-color: lightgrey;
+}
+
+h1, h3
+{
+    text-align: center;
+    margin-bottom: 0;
+}
+
+
+
+.title_post_admin
+{
+    position: relative;
+    bottom: 0;
+    border-radius: 50px 50px 0 0;
+    background-color: black;
+    color: white;
+    font-size: 0.9em;
+    margin-bottom: 0px;
+}
+
+.text_admin 
+{
+    position: relative;
+    top: 60%;
+    background-color: white;
+    margin-top: 0px;
+}
+
+.news
+{
+    max-width: 70%;
+    margin: auto;
+}
+
+a
+{
+    text-decoration: none;
+    color: blue;
+}
+/*HOME PAGE*/
+.home_header
+{
+    display: inline-block;
+    background-color: darkred;
+    color: white;
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 30px;
+}
+
+.block
+{
+    float: right;
+    max-width: 600px;
+}
+
+.form-group
+{
+    display: inline-block;
+}
+
+/*ADMIN VIEW*/
+#title_admin
+{
+    display: inline-block;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.admin_header
+{
+    display: inline-block;
+    background-color: grey;
+    color: white;
+    width: 100%;
+    margin: 0 auto;
+}
+
+#portfolio
+{
+    height: 100%;
+}
+
+
+/*CREATE POST*/
+.return_admin
+{
+    font-size: 2em;
+}
+
+.return_home
+{
+    font-size: 2em;
+    color: white;
+}
+
+
+/*
+
+*/
