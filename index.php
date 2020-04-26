@@ -2,7 +2,6 @@
 
 session_start();
 
-echo 'hello';
 require('C:\wamp64\www\Projet4\controller\frontend.php');
 require('C:\wamp64\www\Projet4\controller\backend.php');
 
