@@ -2,26 +2,30 @@
 
 <?php ob_start(); ?>
     
+    <section id='title_admin'>
+        <div class="container admin_header">
+            <div class="row">
+                <div class="col-sm-6 col-md-8 col-lg-12">
+                    <h1 class="text-center">Modification des billets</h1>
+                </div>
+            </div>  
+        </div>
+    </section>
+
     <?php
 
     $listPostView = new FrontendController();
     $posts = $listPostView->listPosts();
-    $countPost = 0;
     while ($data = $posts->fetch())
     {
     ?>
         <div class="listPanel">
-				<p><a class="linkAdmin" href="index.php?action=updatePostView&amp;id=<?= $data['id']; ?>"><?= $data['title']; ?></a></p>
-				<button class="removePost">Effacer</button>
-					<div id="postModal<?= $countPost ?>" class="modal">
-						<div class="modalContent">
-							<p>Voulez-vous vraiment supprimer l'article <em><?= $data['title']; ?></em> ?</p>
-							<a class="confirmDelete" href="index.php?action=deletePost&amp;id=<?= $data['id']; ?>">Oui</a>
-							<span id="closePostModal<?= $countPost++ ?>" class="closeModal">Non</span>
-						</div>
-					</div>
-				<a class="report" href="index.php?action=updatePost&amp;id=<?= $data['id']; ?>"><i class="fas fa-edit"></i></a>
-				<p><em><?= $data['creation_date_fr']; ?></em></p>
+            <p><a class="link_update" href="index.php?action=updatePostView&amp;id=<?= $data['id']; ?>"><?= $data['title']; ?></a></p>
+            <p><a class="button_removePost" href="index.php?action=deletePost&amp;id=<?= $data['id']; ?>">Effacer</a></p><br>
+            
+            <p><a class="button_removePost delete_post" href="index.php?action=updatePostView&amp;id=<?= $data['id']; ?>">Mettre à jour</a></p>
+            <p><em><?= $data['creation_date_fr']; ?></em></p>
+        </div>
     <?php
     }
     $posts->closeCursor();

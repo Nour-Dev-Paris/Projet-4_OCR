@@ -49,6 +49,7 @@ class BackendController
     {
         $postManage = new PostManage();
         $post = $postManage->getPost($_GET['id']);
+        
         require('..\Projet4\view\backend\update.php');
     }
     
@@ -57,6 +58,7 @@ class BackendController
         $postManage = new PostManage();
         $updated = $postManage->updatePost($title, $content, $postId);
         return $updated;
+        
         Header('Location : index.php?action=adminView&update-post=success');
     }
     
@@ -64,9 +66,9 @@ class BackendController
     {
         $deletePostManage = new PostManage();
         $postDelete = $deletePostManage->deletePost($postId);
-        return $postDelete;
+//        return $postDelete;
         
-        Header('Location : index.php?action=adminView&delete-post=success');
+        Header('Location : index.php?action=loginAdmin&delete-post=success');
     }
     
 }
