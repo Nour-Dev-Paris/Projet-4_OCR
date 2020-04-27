@@ -1,6 +1,6 @@
 <?php 
 
-require_once('C:\wamp64\www\Projet4\model\Manager.php');
+require_once('..\Projet4\model\Manager.php');
 
 class PostManage extends Manager
 {
@@ -40,12 +40,12 @@ class PostManage extends Manager
         return $updated;
     }
     
-//    public function deletePost($postId)
-//    {
-//        $db = $this->dbConnect();
-//        $req = $db->prepare('DELETE FROM posts WHERE id = ?');
-//        $deletedPost = $req->execute(array($postId));
-//
-//        return $deletedPost;
-//    }
+    public function deletePost($postId)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('DELETE FROM posts WHERE id = ?');
+        $deletedPost = $req->execute(array($postId));
+
+        return $deletedPost;
+    }
 }

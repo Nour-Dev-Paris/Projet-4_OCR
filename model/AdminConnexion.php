@@ -1,6 +1,6 @@
 <?php 
 
-require_once('C:\wamp64\www\Projet4\model\Manager.php');
+require_once('..\Projet4\model\Manager.php');
 
 class AdminConnexion extends Manager
 {

@@ -1,12 +1,12 @@
 <?php
-    require_once('C:\wamp64\www\Projet4\model\AdminConnexion.php');
-    require_once('C:\wamp64\www\Projet4\model\PostManage.php');
+    require_once('..\Projet4\model\AdminConnexion.php');
+    require_once('..\Projet4\model\PostManage.php');
 
 class FrontendController
 {
     function homePage()
     {
-        require('C:\wamp64\www\Projet4\view\frontend\listTicketsView.php');
+        require('..\Projet4\view\frontend\listTicketsView.php');
     }
     
     public function listPosts()
@@ -14,7 +14,7 @@ class FrontendController
         $postManager = new PostManage();
         $posts = $postManager->getPosts();
         return $posts;
-        require('view/frontend/listTicketsView.php');
+        require('..\Projet4\view\frontend\listTicketsView.php');
     }
 }
 //

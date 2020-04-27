@@ -2,8 +2,8 @@
 
 session_start();
 
-require('C:\wamp64\www\Projet4\controller\frontend.php');
-require('C:\wamp64\www\Projet4\controller\backend.php');
+require('..\Projet4\controller\frontend.php');
+require('..\Projet4\controller\backend.php');
 
 try 
 {
@@ -42,6 +42,11 @@ try
             $updated = $updatePost->submitUpdate($_POST['title'], $_POST['content'], $_GET['id']);
             return $updated;
         }
+        elseif($_GET['action'] == 'deletePost') {
+            $removePost = new BackendController();
+            $postDelete = $removePost->deletePost($_GET['id']);
+            return $postDelete;
+        }
         elseif($_GET['action'] == 'adminView') {
             $adminReturn = new BackendController();
             $return = $adminReturn->adminView();
@@ -53,8 +58,6 @@ try
                 
                 $submitPostAdmin = new BackendController();
                 $submitPostAdmin->newPost($_POST['title'], $_POST['content']);
-                exit;
-
             }
             else {
                 

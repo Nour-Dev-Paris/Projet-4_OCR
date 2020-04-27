@@ -1,9 +1,6 @@
 <?php $title = "Modification des articles"; ?>
 
-<?php ob_start(); 
-    $updatePostView = new BackendController(); 
-    $post = $updatePostView->submitUpdate($title, $content, $postId);
-?>
+<?php ob_start();?>
     
     <section id='title_admin'>
         <div class="container admin_header">
@@ -29,4 +26,4 @@
 		</div>
 <?php $content = ob_get_clean(); ?>
 
-<?php require('C:\wamp64\www\Projet4\view\frontend\template.php'); ?>
+<?php require('..\Projet4\view\frontend\template.php'); ?>

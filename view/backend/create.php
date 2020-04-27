@@ -26,4 +26,4 @@
 		</div>
 <?php $content = ob_get_clean(); ?>
 
-<?php require('C:\wamp64\www\Projet4\view\frontend\template.php'); ?>
+<?php require('..\Projet4\view\frontend\template.php'); ?>

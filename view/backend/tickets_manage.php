@@ -12,7 +12,7 @@
     ?>
         <div class="listPanel">
 				<p><a class="linkAdmin" href="index.php?action=updatePostView&amp;id=<?= $data['id']; ?>"><?= $data['title']; ?></a></p>
-				<button class="report removePost"><i class="fas fa-trash-alt"></i></button>
+				<button class="removePost">Effacer</button>
 					<div id="postModal<?= $countPost ?>" class="modal">
 						<div class="modalContent">
 							<p>Voulez-vous vraiment supprimer l'article <em><?= $data['title']; ?></em> ?</p>
@@ -29,4 +29,4 @@
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require('C:\wamp64\www\Projet4\view\frontend\template.php'); ?>
+<?php require('..\Projet4\view\frontend\template.php'); ?>
