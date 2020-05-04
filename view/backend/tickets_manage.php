@@ -8,6 +8,7 @@
                 <div class="col-sm-6 col-md-8 col-lg-12">
                     <h1 class="text-center">Modification des billets</h1>
                 </div>
+                <p class="return_admin"><a href="/index.php?action=adminView">Retour au menu</a></p>
             </div>  
         </div>
     </section>

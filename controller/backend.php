@@ -11,8 +11,13 @@ class BackendController
         $resultat = $adminConnexion->getAdminLogin();
         
         if (isset($_POST['pass']) AND $_POST['pass'] == $resultat['pass'] AND isset($_POST['identifiant']) AND $_POST['identifiant'] == $resultat['identifiant']) {
+            
+            sleep(1);
+            
+            $_SESSION['id'] = $resultat['id'];
             $_SESSION['identifiant'] = $resultat['identifiant'];
             $_SESSION['pass'] = $resultat['pass'];
+            
             require('..\Projet4\view\frontend\adminPanel.php');
         }
         else {
@@ -42,7 +47,7 @@ class BackendController
         $postManage = new PostManage();
         $newPostAdmin = $postManage->insertPost($title, $content);
        
-        Header('Location: index.php?action=createPost&new-post=success');
+        header('Location: index.php?action=createPost&new-post=success');
     }
     
     function submitUpdateView()
@@ -68,7 +73,7 @@ class BackendController
         $postDelete = $deletePostManage->deletePost($postId);
 //        return $postDelete;
         
-        Header('Location : index.php?action=loginAdmin&delete-post=success');
+        header('Location : index.php?action=loginAdmin&delete-post=success');
     }
     
 }
