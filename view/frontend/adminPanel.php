@@ -21,16 +21,22 @@
                     <h3></h3>
                 </div>
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <a class="thumbnail" href="/index.php?action=createPost">
                             <img src="public/images/img1.jpg" alt="#">
                             <h2 class="text-center">Ecrire un billet</h2>
                         </a>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <a class="thumbnail" href="/index.php?action=updateView">
                             <img src="public/images/img2.jpg" alt="#">
                             <h2 class="text-center">Gestion des billets</h2>
+                        </a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a class="thumbnail" href="/index.php?action=commentManageView">
+                            <img src="public/images/img12.jpg" alt="#">
+                            <h2 class="text-center">Modération</h2>
                         </a>
                     </div>
                 </div>

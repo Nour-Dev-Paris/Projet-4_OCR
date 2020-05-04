@@ -35,6 +35,11 @@ class BackendController
         require('..\Projet4\view\frontend\adminPanel.php');
     }
     
+    function commentManageView()
+    {
+        require('..\Projet4\view\backend\comments_manage.php');
+    }
+    
     function UpdateView()
     {
         require('..\Projet4\view\backend\tickets_manage.php');
@@ -76,6 +81,13 @@ class BackendController
         header('Location : index.php?action=loginAdmin&delete-post=success');
     }
     
+    function commentManage()
+    {
+        $commentManage = new ReportManage();
+        $manageComment = $commentManage->getReports();
+        
+//        require('..\Projet4\view\backend\update.php');
+    }
 }
 //            $isPassCorrect = password_verify($_POST['pass'], $resultat['pass']);
 //            if (!$resultat)

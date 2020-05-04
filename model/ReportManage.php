@@ -14,7 +14,7 @@ class ReportManage extends Manager{
 
     public function getReports() {
       $db = $this->dbConnect();
-      $reports = $db->query('SELECT author AS author_comment, comment, comment_date
+      $reports = $db->query('SELECT author, comment, comment_date
       FROM comments
       WHERE reports.comment_id = comments.id');
 

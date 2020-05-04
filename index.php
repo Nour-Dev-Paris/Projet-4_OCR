@@ -93,6 +93,11 @@ try
                     echo 'Erreur : tous les champs ne sont pas remplis !';
                 }
             }
+            elseif($_GET['action'] == 'commentManageView') {
+                $commentViewManage = new BackendController();
+                $commentView = $commentViewManage->commentManageView();
+                return $commentView;
+            }
         } 
         elseif ($_GET['action'] == 'listPosts') {
             $listPost = new FrontendController();
