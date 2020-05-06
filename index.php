@@ -98,6 +98,27 @@ try
                 $commentView = $commentViewManage->commentManageView();
                 return $commentView;
             }
+            elseif($_GET['action'] == 'commentManage') {
+                
+                if(isset($_GET['id']) && $_GET['id'] > 0) {
+                    $updateReportView = new BackendController();
+                    $viewUpdateReport = $updateReportView->submitReportView();
+                } else {
+                    echo 'aucun identifiant de commentaire trouvé';
+                }
+            }
+            elseif($_GET['action'] == 'updateReport') {
+                $updateReport = new BackendController();
+                $reportUpdated = $updateReport->reportUpdate($_POST['title'], $_POST['content'], $_GET['id']);
+                
+                return $reportUpdated;
+            }
+            elseif($_GET['action'] == 'deleteComment') {
+                $removeComment = new BackendController();
+                $commentDelete = $removeComment->deleteComment($_GET['id']);
+                
+                return $commentDelete;
+            }
         } 
         elseif ($_GET['action'] == 'listPosts') {
             $listPost = new FrontendController();

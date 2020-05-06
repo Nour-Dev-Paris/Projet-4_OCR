@@ -6,7 +6,7 @@
         <div class="container admin_header">
             <div class="row">
                 <div class="col-sm-6 col-md-8 col-lg-12">
-                    <h1 class="text-center">Modification des billets</h1>
+                    <h1 class="text-center">Modération des commentaires</h1>
                 </div>
                 <p class="return_admin"><a href="/index.php?action=adminView">Retour au menu</a></p>
             </div>  
@@ -15,21 +15,31 @@
 
     <?php
 
-    $listPostView = new FrontendController();
-    $posts = $listPostView->listPosts();
-    while ($data = $posts->fetch())
+    $listCommentsView = new BackendController();
+    $commentsView = $listCommentsView->getReports();
+//    var_dump($commentsView);
+//    exit;
+    while ($data = $commentsView->fetch())
     {
     ?>
         <div class="listPanel">
-            <p><a class="link_update" href="index.php?action=updatePostView&amp;id=<?= $data['id']; ?>"><?= $data['title']; ?></a></p>
-            <p><a class="button_removePost" href="index.php?action=deletePost&amp;id=<?= $data['id']; ?>">Effacer</a></p><br>
-            
-            <p><a class="button_removePost delete_post" href="index.php?action=updatePostView&amp;id=<?= $data['id']; ?>">Mettre à jour</a></p>
-            <p><em><?= $data['creation_date_fr']; ?></em></p>
+            <p>
+                <a class="link_update author_comment" href="index.php?action=commentManage&amp;id=<?= $data['id']; ?>">Pseudo : <br><?= $data['author']; ?></a>
+            </p>
+            <p>
+                <a class="link_update comment" href="index.php?action=commentManage&amp;id=<?= $data['id']; ?>">Commentaire : <br><?= $data['comment']; ?></a>
+            </p>
+            <p class="date_comment"><em>Date : <?= $data['comment_date']; ?></em></p>
+            <p>
+                <a class="button_removePost" href="index.php?action=deleteComment&amp;id=<?= $data['id']; ?>">Effacer</a>
+            </p><br>
+            <p>
+                <a class="button_removePost delete_post" href="index.php?action=commentManage&amp;id=<?= $data['id']; ?>">Mettre à jour</a>
+            </p>
         </div>
     <?php
     }
-    $posts->closeCursor();
+    $commentsView->closeCursor();
     ?>
 
 <?php $content = ob_get_clean(); ?>

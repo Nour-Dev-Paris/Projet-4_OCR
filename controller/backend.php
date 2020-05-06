@@ -53,6 +53,7 @@ class BackendController
         $newPostAdmin = $postManage->insertPost($title, $content);
        
         header('Location: index.php?action=createPost&new-post=success');
+        exit;
     }
     
     function submitUpdateView()
@@ -67,9 +68,10 @@ class BackendController
     {
         $postManage = new PostManage();
         $updated = $postManage->updatePost($title, $content, $postId);
-        return $updated;
+//        return $updated;
         
-        Header('Location : index.php?action=adminView&update-post=success');
+        header('Location: index.php?action=updateView&update-post=success');
+        exit;
     }
     
     function deletePost($postId)
@@ -78,33 +80,40 @@ class BackendController
         $postDelete = $deletePostManage->deletePost($postId);
 //        return $postDelete;
         
-        header('Location : index.php?action=loginAdmin&delete-post=success');
+        header('Location: index.php?action=loginAdmin&delete-post=success');
+        exit;
+    }
+
+    function getReports()
+    {
+        $getReportsView = new ReportManage();
+        $reportsView = $getReportsView->getReports();
+        return $reportsView;
     }
     
-    function commentManage()
+    function submitReportView()
     {
-        $commentManage = new ReportManage();
-        $manageComment = $commentManage->getReports();
+        $reportManage = new ReportManage();
+        $getReportView = $reportManage->getReport($_GET['id']);
         
-//        require('..\Projet4\view\backend\update.php');
+        require('..\Projet4\view\backend\update_report.php');
+    }
+    
+    function reportUpdate($author, $comment, $postId)
+    {
+        $reportManage = new ReportManage();
+        $updateReport = $reportManage->updateReport($author, $comment, $postId);
+        
+        header('Location: index.php?action=commentManageView&update-post=success');
+        exit;
+    }
+    
+    function deleteComment($commentId)
+    {
+        $deleteCommentManage = new ReportManage();
+        $commentDelete = $deleteCommentManage->deleteComment($commentId);
+
+        header('Location: index.php?action=commentManageView&delete-post=success');
+        exit;
     }
 }
-//            $isPassCorrect = password_verify($_POST['pass'], $resultat['pass']);
-//            if (!$resultat)
-//            {
-//                echo 'erreur';
-//                //header('Location: index.php?action=homePage');
-//            }
-//            else
-//            {
-//                if ($isPassCorrect) {
-//                    $_SESSION['identifiant'] = $resultat['identifiant'];
-//                    $_SESSION['pass'] = $resultat['pass'];
-//                    require('C:\wamp64\www\Projet 4\view\frontend\ticketView.php');
-//                }
-//                else {
-//                    echo 'erreur';
-//                    //header('Location: index.php?action=homePage');
-//                }
-//            }
-  

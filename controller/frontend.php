@@ -52,6 +52,6 @@ class FrontendController
         
         $reported = $reportManage->postReports($commentId);
         
-        header('Location: index.php?action=post&id=' . $postId . '&report=success');
+        header('Location: index.php?action=post&id=' . $commentId . '&report=success');
     }
 }

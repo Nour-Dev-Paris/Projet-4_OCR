@@ -21,10 +21,16 @@
     {
     ?>
         <div class="listPanel">
-            <p><a class="link_update" href="index.php?action=updatePostView&amp;id=<?= $data['id']; ?>"><?= $data['title']; ?></a></p>
-            <p><a class="button_removePost" href="index.php?action=deletePost&amp;id=<?= $data['id']; ?>">Effacer</a></p><br>
+            <p>
+                <a class="link_update" href="index.php?action=updatePostView&amp;id=<?= $data['id']; ?>"><?= $data['title']; ?></a>
+            </p>
+            <p>
+                <a class="button_removePost" href="index.php?action=deletePost&amp;id=<?= $data['id']; ?>">Effacer</a>
+            </p><br>
             
-            <p><a class="button_removePost delete_post" href="index.php?action=updatePostView&amp;id=<?= $data['id']; ?>">Mettre à jour</a></p>
+            <p>
+                <a class="button_removePost delete_post" href="index.php?action=updatePostView&amp;id=<?= $data['id']; ?>">Mettre à jour</a>
+            </p>
             <p><em><?= $data['creation_date_fr']; ?></em></p>
         </div>
     <?php

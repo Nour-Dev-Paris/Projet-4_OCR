@@ -255,5 +255,24 @@ a
     color: white;
     padding: 1%;
     border-radius: 2rem;
-    
+}
+
+/*COMMENT MANAGE*/
+.author_comment
+{
+    color: black;
+    font-size: 1.5em;
+}
+
+.comment
+{
+    color: black;
+    font-size: 1.4em;
+}
+
+.date_comment
+{
+    margin-top: 2%;
+    margin-bottom: 5%;
+    font-size: 1.1em;
 }
