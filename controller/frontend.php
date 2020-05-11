@@ -11,6 +11,14 @@ class FrontendController
         require('..\Projet4\view\frontend\listTicketsView.php');
     }
     
+    function postReportView()
+    {
+        $reportManage = new ReportManage();
+        $getReportView = $reportManage->getReport($_GET['id']);  
+        
+        require('..\Projet4\view\frontend\postReport.php');
+    }
+    
     public function listPosts()
     {
         $postManager = new PostManage();
@@ -28,7 +36,7 @@ class FrontendController
         $comments = $commentManage->getComments($_GET['id']);
         
         require('..\Projet4\view\frontend\postView.php');
-        
+        exit;
         return $post;
     }
     
@@ -52,6 +60,7 @@ class FrontendController
         
         $reported = $reportManage->postReports($commentId);
         
-        header('Location: index.php?action=post&id=' . $commentId . '&report=success');
+        header('Location: index.php?action=postReportView&id=' . $commentId . '&report=success');
+        exit;
     }
 }

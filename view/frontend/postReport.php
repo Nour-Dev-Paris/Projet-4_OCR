@@ -1,7 +1,8 @@
 <?php $title = "Le Blog de Jean Forteroche"; ?>
 
 <?php ob_start(); ?>
-    <div class="container home_header text-center">
+    
+     <div class="container home_header text-center">
             <div class="heading col-sm-4 col-md-6 col-lg-6">
                 <h1>Billet Simple pour l'Alaska</h1>
                 <h2>Jean Forteroche</h2>
@@ -26,34 +27,26 @@
             </div>
     </div>
 
-<?php
-
-    $listPostView = new FrontendController();
-    $posts = $listPostView->listPosts();
-
-    while ($data = $posts->fetch())
-    {
-    ?>
-        <div class="news">
-            <div class="title_post_admin">
-                <h3 class="title_chap">
-                    <?= ($data['title']) ?>
-                </h3>
-                <em class="date_em">le <?= $data['creation_date_fr'] ?></em>
-                <div class="text_admin">
-                    <p class="text_content_admin">
-                        <?= ($data['content']) ?>
-                        <br />
-                        <em class="com_em"><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a></em>
-                    </p>
-                </div>
-            </div>    
-        </div>
-
     <?php
-    }
-    $posts->closeCursor();
+//var_dump($getReportView['author']);
+//var_dump($getReportView['comment']);
+//    exit;
     ?>
+        <div class="listPanel">
+            <p class="style_report">Merci d'avoir signalé ce commentaire : </p>
+            
+            <p class="style_report_view">
+               Auteur : <?= $getReportView['author']; ?>
+            </p>
+            <p class="style_report_view">
+                Commentaire : <?= $getReportView['comment']; ?>
+            </p>
+            <p class="style_report">
+                Il sera traité par le modérateur du site !
+            </p>
+        </div>
+    
+<a  class="home_page text-center" href="/index.php?action=homePage">Retour à la page d'accueil</a>
 
 <?php $content = ob_get_clean(); ?>
 

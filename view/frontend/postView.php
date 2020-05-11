@@ -71,10 +71,10 @@
 {
 ?>
     <div class="comment_view">
-        <p class="comment_style"><strong><?= htmlspecialchars($comment['author']) ?></strong><br> <em class="date_comment">le <?= $comment['comment_date_fr'] ?></em></p>
+        <p class="comment_style"><strong><?= $comment['author'] ?></strong><br> <em class="date_comment">le <?= $comment['comment_date_fr'] ?></em></p>
         <div class="line_style"></div>
-        <p class="comment_style"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
-        <p class="signal_com"><a href="index.php?action=report&amp;id=<?= $comment['id'] ?>'&amp;comment_id=<?= $post['id'] ?>">Signaler</a></p>
+        <p class="comment_style"><?= $comment['comment'] ?></p>
+        <p class="signal_com"><a href="index.php?action=report&amp;id=<?= $comment['id'] ?>&amp;comment_id=<?= $post['id'] ?>">Signaler</a></p>
     </div>
 <?php
 }

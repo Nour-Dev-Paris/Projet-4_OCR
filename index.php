@@ -21,6 +21,18 @@ try
                 return $viewPost;
             }
         }
+        elseif ($_GET['action'] == 'postReportView') {
+                $postReportView = new FrontendController();
+                $reportView = $postReportView->postReportView();
+                return $reportView;
+            
+                if(isset($_GET['id']) && $_GET['id'] > 0) {
+                    $postReportView = new FrontendController();
+                $reportView = $postReportView->postReportView();
+                } else {
+                    echo 'aucun identifiant de commentaire trouvé';
+                }
+        }
         elseif ($_GET['action'] == 'homePage') {
                 $pageHome = new FrontendController();
                 $home = $pageHome->homePage();

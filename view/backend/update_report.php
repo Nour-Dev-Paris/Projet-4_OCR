@@ -17,11 +17,11 @@
 			<p class="return_admin"><a href="/index.php?action=adminView">Retour au menu</a></p>
 			<div id="updateBlock">
 				<form action="index.php?action=updateReport&amp;id=<?= $getReportView['id']; ?>" method="post">
-				<label for="title">Titre : </label>
-				<input type="text" name="title" id="title" value="<?= $getReportView['author'];?>" /><br/>
-				<textarea id="mytextarea" name="content" rows="40" cols="160"><?= $getReportView['comment'];?></textarea>
-				<input type="submit" value="Poster" />
-			</form>
+                    <label for="title">Titre : </label>
+                    <input type="text" name="title" id="title" value="<?= $getReportView['author'];?>" /><br/>
+                    <textarea id="mytextarea" name="content" rows="40" cols="160"><?= nl2br($getReportView['comment']);?></textarea>
+                    <input type="submit" value="Poster" />
+                </form>
 			</div>
 		</div>
 <?php $content = ob_get_clean(); ?>
