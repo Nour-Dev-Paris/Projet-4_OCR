@@ -223,9 +223,12 @@ footer a
 
 .comment
 {
-    background-color: darkgrey;
+/*    background-color: darkgrey;*/
+    border: 2px solid black;
+    width: 60%;
+    margin: auto;
     padding-top: 1%;
-    margin-top: 2%;
+    margin-top: 4%;
     padding-bottom: 2%;
 }
 
@@ -253,7 +256,7 @@ footer a
 {
     max-width: 50%;
     margin: auto;
-    background-color: lightgrey;
+/*    background-color: lightgrey;*/
     color: darkslategrey;
     border: 1px solid black;
     border-radius: 3rem;
