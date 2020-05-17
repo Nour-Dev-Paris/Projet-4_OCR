@@ -1,5 +1,7 @@
 <?php 
 
+namespace Projet4\model;
+
 require_once('..\Projet4\model\Manager.php');
 
 class AdminConnexion extends Manager

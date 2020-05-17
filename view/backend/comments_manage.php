@@ -13,34 +13,34 @@
         </div>
     </section>
 
-    <?php
+<?php
 
     $listCommentsView = new BackendController();
     $commentsView = $listCommentsView->getReports();
-//    var_dump($commentsView);
-//    exit;
     while ($data = $commentsView->fetch())
-    {
-    ?>
-        <div class="listPanel">
-            <p>
-                <a class="link_update author_comment" href="index.php?action=commentManage&amp;id=<?= $data['id']; ?>">Pseudo : <br><?= $data['author']; ?></a>
-            </p>
-            <p>
-                <a class="link_update comment" href="index.php?action=commentManage&amp;id=<?= $data['id']; ?>">Commentaire : <br><?= $data['comment']; ?></a>
-            </p>
-            <p class="date_comment"><em>Date : <?= $data['comment_date']; ?></em></p>
-            <p>
-                <a class="button_removePost" href="index.php?action=deleteComment&amp;id=<?= $data['id']; ?>">Effacer</a>
-            </p><br>
-            <p>
-                <a class="button_removePost delete_post" href="index.php?action=commentManage&amp;id=<?= $data['id']; ?>">Mettre à jour</a>
-            </p>
-        </div>
-    <?php
-    }
+{
+?>
+
+    <div class="listPanel">
+        <p>
+            <a class="link_update author_comment" href="index.php?action=commentManage&amp;id=<?= $data['id']; ?>">Pseudo : <br><?= $data['author']; ?></a>
+        </p>
+        <p>
+            <a class="link_update comment" href="index.php?action=commentManage&amp;id=<?= $data['id']; ?>">Commentaire : <br><?= $data['comment']; ?></a>
+        </p>
+        <p class="date_comment"><em>Date : <?= $data['comment_date']; ?></em></p>
+        <p>
+            <a class="button_removePost" href="index.php?action=deleteComment&amp;id=<?= $data['id']; ?>">Effacer</a>
+        </p><br>
+        <p>
+            <a class="button_removePost delete_post" href="index.php?action=commentManage&amp;id=<?= $data['id']; ?>">Mettre à jour</a>
+        </p>
+    </div>
+
+<?php
+}
     $commentsView->closeCursor();
-    ?>
+?>
 
 <?php $content = ob_get_clean(); ?>
 

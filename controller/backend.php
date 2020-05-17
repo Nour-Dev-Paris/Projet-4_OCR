@@ -1,7 +1,14 @@
 <?php
 
-require_once('..\Projet4\model\AdminConnexion.php');
-require_once('..\Projet4\model\PostManage.php');
+use \Projet4\model\Autoloader;
+use \Projet4\model\AdminConnexion;
+use \Projet4\model\PostManage;
+use \Projet4\model\CommentManage;
+use \Projet4\model\ReportManage;
+
+require_once '..\Projet4\model\Autoloader.php';
+Autoloader::register();
+
 
 class BackendController
 {
@@ -10,7 +17,9 @@ class BackendController
         $adminConnexion = new AdminConnexion();
         $resultat = $adminConnexion->getAdminLogin();
         
-        if (isset($_POST['pass']) AND $_POST['pass'] == $resultat['pass'] AND isset($_POST['identifiant']) AND $_POST['identifiant'] == $resultat['identifiant']) {
+        $passCorrect = password_verify($_POST['pass'], $resultat['pass']);
+
+        if (isset($_POST['pass']) AND $_POST['pass'] == $passCorrect AND isset($_POST['identifiant']) AND $_POST['identifiant'] == $resultat['identifiant']) {
             
             sleep(1);
             
@@ -52,7 +61,7 @@ class BackendController
         $postManage = new PostManage();
         $newPostAdmin = $postManage->insertPost($title, $content);
        
-        header('Location: index.php?action=createPost&new-post=success');
+        header('Location: index.php?action=adminView&new-post=success');
         exit;
     }
     
@@ -80,7 +89,7 @@ class BackendController
         $postDelete = $deletePostManage->deletePost($postId);
 //        return $postDelete;
         
-        header('Location: index.php?action=loginAdmin&delete-post=success');
+        header('Location: index.php?action=adminView&delete-post=success');
         exit;
     }
 

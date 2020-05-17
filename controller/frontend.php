@@ -1,8 +1,14 @@
 <?php
-    require_once('..\Projet4\model\AdminConnexion.php');
-    require_once('..\Projet4\model\PostManage.php');
-    require_once('..\Projet4\model\CommentManage.php');
-    require_once('..\Projet4\model\ReportManage.php');
+     
+use \Projet4\model\Autoloader;
+use \Projet4\model\AdminConnexion;
+use \Projet4\model\PostManage;
+use \Projet4\model\CommentManage;
+use \Projet4\model\ReportManage;
+
+require_once '..\Projet4\model\Autoloader.php';
+Autoloader::register();
+
 
 class FrontendController
 {

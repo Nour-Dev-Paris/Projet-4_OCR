@@ -1,10 +1,14 @@
 <?php 
 
+namespace Projet4\model;
+
 require_once('..\Projet4\model\Manager.php');
 
-class ReportManage extends Manager{
+class ReportManage extends Manager
+{
 
-    public function postReports($commentId) {
+    public function postReports($commentId) 
+    {
     	$db = $this->dbConnect();
     	$req = $db->prepare('INSERT INTO reports(comment_id, report_date) VALUES(?, NOW())');
     	$reported = $req->execute(array($commentId));
@@ -12,7 +16,8 @@ class ReportManage extends Manager{
     	return $reported;
     }
 
-    public function getReports() {
+    public function getReports() 
+    {
       $db = $this->dbConnect();
       $reports = $db->query('Select DISTINCT comments.* 
       FROM comments, reports 
@@ -41,7 +46,8 @@ class ReportManage extends Manager{
         return $updated;
     }
     
-    public function deleteComment($commentId) {
+    public function deleteComment($commentId) 
+    {
         $db = $this->dbConnect();
         $req = $db->prepare('DELETE FROM comments WHERE id = ?');
         $deletedComment = $req->execute(array($commentId));

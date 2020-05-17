@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="fr">
     <head>
         <meta charset="utf-8" />
@@ -31,7 +32,9 @@
             AOS.init();
         </script>
     </body>
+    
     <footer>
-        <p><a href="https://abdenour-belkacemi-developpeur-web.com"/>© 2020 Abdenour Belkacemi - Développeur Web</a></p>
+        <p><a href="https://abdenour-belkacemi-developpeur-web.com">© 2020 Abdenour Belkacemi - Développeur Web</a></p>
     </footer>
+    
 </html>

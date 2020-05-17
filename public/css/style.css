@@ -31,7 +31,8 @@ h1, h3
     color: white;
     font-size: 0.9em;
     margin-bottom: 0px;
-    background-image: url(../images/img15.jpg);
+    background-image: url(../images/img18.jpg);
+    border: 2px solid black;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -69,6 +70,10 @@ h1, h3
     padding: 5%;
 }
 
+.text_admin p
+{
+    background-color: transparent !important;
+}
 .news
 {
     max-width: 70%;

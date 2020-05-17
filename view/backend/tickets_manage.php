@@ -13,13 +13,13 @@
         </div>
     </section>
 
-    <?php
+<?php
 
     $listPostView = new FrontendController();
     $posts = $listPostView->listPosts();
     while ($data = $posts->fetch())
-    {
-    ?>
+{
+?>
         <div class="listPanel">
             <p>
                 <a class="link_update" href="index.php?action=updatePostView&amp;id=<?= $data['id']; ?>"><?= $data['title']; ?></a>
@@ -33,10 +33,10 @@
             </p>
             <p><em><?= $data['creation_date_fr']; ?></em></p>
         </div>
-    <?php
-    }
+<?php
+}
     $posts->closeCursor();
-    ?>
+?>
 
 <?php $content = ob_get_clean(); ?>
 
