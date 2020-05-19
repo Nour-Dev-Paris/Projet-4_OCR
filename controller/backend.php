@@ -27,10 +27,16 @@ class BackendController
             $_SESSION['identifiant'] = $resultat['identifiant'];
             $_SESSION['pass'] = $resultat['pass'];
             
-            require('..\Projet4\view\frontend\adminPanel.php');
+            require('..\Projet4\view\backend\adminPanel.php');
         }
-        else {
-            echo'erreur';
+        else 
+        {
+            echo 'Admin non identifié !';
+            
+            sleep(2);
+            
+            header('Location: index.php?action=homePage');
+            exit;
         }
      } 
 
@@ -41,7 +47,7 @@ class BackendController
 
     function adminView()
     {
-        require('..\Projet4\view\frontend\adminPanel.php');
+        require('..\Projet4\view\backend\adminPanel.php');
     }
     
     function commentManageView()
@@ -123,6 +129,14 @@ class BackendController
         $commentDelete = $deleteCommentManage->deleteComment($commentId);
 
         header('Location: index.php?action=commentManageView&delete-post=success');
+        exit;
+    }
+    
+    function sessionStop()
+    {
+        session_destroy();
+        
+        header('Location: index.php?action=homePage&deconnexion=sucess');
         exit;
     }
 }

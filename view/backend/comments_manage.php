@@ -26,7 +26,7 @@
             <a class="link_update author_comment" href="index.php?action=commentManage&amp;id=<?= $data['id']; ?>">Pseudo : <br><?= $data['author']; ?></a>
         </p>
         <p>
-            <a class="link_update comment" href="index.php?action=commentManage&amp;id=<?= $data['id']; ?>">Commentaire : <br><?= $data['comment']; ?></a>
+            <a class="link_update text-comment" href="index.php?action=commentManage&amp;id=<?= $data['id']; ?>">Commentaire : <br><?= $data['comment']; ?></a>
         </p>
         <p class="date_comment"><em>Date : <?= $data['comment_date']; ?></em></p>
         <p>

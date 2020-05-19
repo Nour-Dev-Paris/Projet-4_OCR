@@ -170,8 +170,18 @@ footer a
 
 .return_home
 {
-    font-size: 2em;
+    font-size: 1.6em;
     color: white;
+    float: left;
+    margin-left: 5%;
+}
+
+.session_stop
+{
+    font-size: 1.6em;
+    color: white;
+    float: right;
+    margin-right: 5%;
 }
 
 /* TICKETS MANAGE */
@@ -303,7 +313,7 @@ footer a
     font-size: 1.5em;
 }
 
-.comment
+.text-comment
 {
     color: black;
     font-size: 1.4em;

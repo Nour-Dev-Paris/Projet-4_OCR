@@ -9,6 +9,7 @@
                     <h1 class="text-center">Panneau d'administration</h1>
                     <h2 class="text-center"><?php echo'Bonjour ' . $_SESSION['identifiant']; ?></h2>
                     <p class="return_home"><a href="/index.php?action=homePage">Retour à la page d'accueil</a></p>
+                    <p class="session_stop"><a href="/index.php?action=sessionStop">Déconnexion</a></p>
                 </div>
             </div>  
         </div>

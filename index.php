@@ -20,34 +20,45 @@ try
                 
                 return $viewPost;
             }
+            else {
+                throw new Exception('Aucun identifiant de billet envoyé');
+	        }
         }
         elseif ($_GET['action'] == 'postReportView') {
+            $postReportView = new FrontendController();
+            $reportView = $postReportView->postReportView();
+            return $reportView;
+            
+            if(isset($_GET['id']) && $_GET['id'] > 0) {
                 $postReportView = new FrontendController();
                 $reportView = $postReportView->postReportView();
-                return $reportView;
-            
-                if(isset($_GET['id']) && $_GET['id'] > 0) {
-                    $postReportView = new FrontendController();
-                $reportView = $postReportView->postReportView();
-                } else {
-                    echo 'aucun identifiant de commentaire trouvé';
-                }
+            }
+            else 
+            {
+                throw new Exception('Aucun identifiant de billet envoyé');
+            }
         }
         elseif ($_GET['action'] == 'homePage') {
                 $pageHome = new FrontendController();
                 $home = $pageHome->homePage();
                 return $home;
         }
+        
         elseif($_GET['action'] == 'addComment') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_POST['author']) && !empty($_POST['comment'])) {
                     $addComment = new FrontendController();
                     $addComment->addComment($_GET['id'], $_POST['author'], $_POST['comment']);
                 }
-                else {
-                    echo 'Erreur tous les champs ne sont pas remplis !';
-                }
+                else 
+                {
+                    throw new Exception('Tous les champs ne sont pas remplis !');
+	            }
             }
+            else 
+            {
+                throw new Exception('Aucun identifiant de billet envoyé');
+	        }
         }
         elseif ($_GET['action'] == 'report') {
             $reportComment = new FrontendController();
@@ -55,9 +66,9 @@ try
 		}
         elseif (isset($_SESSION) && $_SESSION['id'] == '1') {
             if($_GET['action'] == 'loginAdmin') {
-            $adminLogin = new BackendController();
-            $admin = $adminLogin->loginAdmin();
-            return $admin;
+                $adminLogin = new BackendController();
+                $admin = $adminLogin->loginAdmin();
+                return $admin;
             }
             elseif($_GET['action'] == 'createPost') {
                 $postCreate = new BackendController();
@@ -74,8 +85,10 @@ try
                 if(isset($_GET['id']) && $_GET['id'] > 0) {
                     $updatePostView = new BackendController();
                     $viewUpdatePost = $updatePostView->submitUpdateView();
-                } else {
-                    echo 'aucun identifiant de billet trouvé';
+                }
+                else 
+                {
+                    throw new Exception('Aucun identifiant de billet envoyé');
                 }
             }
             elseif($_GET['action'] == 'updatePost') {
@@ -100,9 +113,9 @@ try
                     $submitPostAdmin = new BackendController();
                     $submitPostAdmin->newPost($_POST['title'], $_POST['content']);
                 }
-                else {
-
-                    echo 'Erreur : tous les champs ne sont pas remplis !';
+                else 
+                {
+                    throw new Exception('Tous les champs ne sont pas remplis !');
                 }
             }
             elseif($_GET['action'] == 'commentManageView') {
@@ -115,8 +128,10 @@ try
                 if(isset($_GET['id']) && $_GET['id'] > 0) {
                     $updateReportView = new BackendController();
                     $viewUpdateReport = $updateReportView->submitReportView();
-                } else {
-                    echo 'aucun identifiant de commentaire trouvé';
+                }
+                else 
+                {
+                    throw new Exception('Aucun identifiant de commentaire envoyé');
                 }
             }
             elseif($_GET['action'] == 'updateReport') {
@@ -131,13 +146,17 @@ try
                 
                 return $commentDelete;
             }
+            elseif($_GET['action'] == 'sessionStop') {
+                $removeSession = new BackendController();
+                $sessionStop = $removeSession->sessionStop();
+                return $sessionStop;
+            }
         } 
         elseif ($_GET['action'] == 'listPosts') {
             $listPost = new FrontendController();
             $posts = $listPost->listPosts();
             return $posts;
-        }
-        
+        }    
     }
     else
     {
