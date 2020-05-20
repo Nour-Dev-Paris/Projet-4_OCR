@@ -97,13 +97,6 @@ class BackendController
         header('Location: index.php?action=adminView&delete-post=success');
         exit;
     }
-
-    // function getReports() //
-    // {
-    //     $getReportsView = new ReportManage();
-    //     $reportsView = $getReportsView->getReports();
-    //     return $reportsView;
-    //}
     
     function submitReportView() // Récupère les commentaires signalés avec leurs ID
     {
