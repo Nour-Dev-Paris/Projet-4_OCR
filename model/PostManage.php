@@ -6,7 +6,7 @@ require_once('..\Projet4\model\Manager.php');
 
 class PostManage extends Manager
 {
-    public function insertPost($title, $content)  //createPost
+    public function insertPost($title, $content)  // Insère un article crée par l'Admin
     {
         $db = $this->dbConnect();
         $postAdmin = $db->prepare('INSERT INTO posts(title, content, creation_date, update_date) VALUES(?, ?, NOW(), NOW())');
@@ -15,7 +15,7 @@ class PostManage extends Manager
         return $newPostAdmin;
     }
     
-    public function getPosts()
+    public function getPosts() // Récupère les articles avec les infos liées
     {
         $db = $this->dbConnect();
         $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts ORDER BY creation_date DESC LIMIT 0, 5');
@@ -23,7 +23,7 @@ class PostManage extends Manager
         return $req;
     }
     
-    public function getPost($postId)
+    public function getPost($postId) // Récupère un article 
     {
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, "%d/%m/%Y %H:%i:%s") AS date_fr, DATE_FORMAT(update_date, "%d/%m/%Y %H:%i:%s") AS update_date_fr FROM posts WHERE id = ?');
@@ -33,7 +33,7 @@ class PostManage extends Manager
         return $post;
     }
     
-    public function updatePost($title, $content, $postId)
+    public function updatePost($title, $content, $postId) // Modifie un article
     {
         $db = $this->dbConnect();
         $req = $db->prepare('UPDATE posts SET title = ?, content = ?, update_date = NOW() WHERE id = ?');
@@ -42,7 +42,7 @@ class PostManage extends Manager
         return $updated;
     }
     
-    public function deletePost($postId)
+    public function deletePost($postId) // Supprime un article
     {
         $db = $this->dbConnect();
         $req = $db->prepare('DELETE FROM posts WHERE id = ?');

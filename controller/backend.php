@@ -1,4 +1,4 @@
-<?php
+<?php // Controlleur gérant la partie Backend
 
 use \Projet4\model\Autoloader;
 use \Projet4\model\AdminConnexion;
@@ -12,7 +12,7 @@ Autoloader::register();
 
 class BackendController
 {
-    function loginAdmin() 
+    function loginAdmin() //Compare l'ID et le mot de passe hashé et crée les ID Session si tout est ok
     {
         $adminConnexion = new AdminConnexion();
         $resultat = $adminConnexion->getAdminLogin();
@@ -39,31 +39,31 @@ class BackendController
             exit;
         }
      } 
-
-    function createPost()
+     
+    function adminView() // Appel la vue de l'adminPanel
+    {
+        require('..\Projet4\view\backend\adminPanel.php');
+    }
+     
+    function createPost() // Appel la vue permettant de créer un article
     {
         require('..\Projet4\view\backend\create.php');
     }
 
-    function adminView()
-    {
-        require('..\Projet4\view\backend\adminPanel.php');
-    }
     
-    function commentManageView()
+    function commentManageView() // Appel la vue de la gestion des commentaires
     {
         require('..\Projet4\view\backend\comments_manage.php');
     }
     
-    function UpdateView()
+    function UpdateView() // Appel la vue de la gestion des articles
     {
         require('..\Projet4\view\backend\tickets_manage.php');
     }
     
-    public function newPost($title, $content)
+    public function newPost($title, $content) // Ajout d'un article
     {
-//        $postManage = new PostManage();
-//        $newPost = $postManage->insertPost($title, $content);
+
         $postManage = new PostManage();
         $newPostAdmin = $postManage->insertPost($title, $content);
        
@@ -71,7 +71,7 @@ class BackendController
         exit;
     }
     
-    function submitUpdateView()
+    function submitUpdateView() // Appel de la vue d'un article à modifier avec son ID
     {
         $postManage = new PostManage();
         $post = $postManage->getPost($_GET['id']);
@@ -79,7 +79,7 @@ class BackendController
         require('..\Projet4\view\backend\update.php');
     }
     
-    function submitUpdate($title, $content, $postId)
+    function submitUpdate($title, $content, $postId) // Modifie un article déjà crée dans la BDD
     {
         $postManage = new PostManage();
         $updated = $postManage->updatePost($title, $content, $postId);
@@ -89,24 +89,23 @@ class BackendController
         exit;
     }
     
-    function deletePost($postId)
+    function deletePost($postId) // Supprime un article de la BDD
     {
         $deletePostManage = new PostManage();
         $postDelete = $deletePostManage->deletePost($postId);
-//        return $postDelete;
-        
+                
         header('Location: index.php?action=adminView&delete-post=success');
         exit;
     }
 
-    function getReports()
-    {
-        $getReportsView = new ReportManage();
-        $reportsView = $getReportsView->getReports();
-        return $reportsView;
-    }
+    // function getReports() //
+    // {
+    //     $getReportsView = new ReportManage();
+    //     $reportsView = $getReportsView->getReports();
+    //     return $reportsView;
+    //}
     
-    function submitReportView()
+    function submitReportView() // Récupère les commentaires signalés avec leurs ID
     {
         $reportManage = new ReportManage();
         $getReportView = $reportManage->getReport($_GET['id']);
@@ -114,7 +113,7 @@ class BackendController
         require('..\Projet4\view\backend\update_report.php');
     }
     
-    function reportUpdate($author, $comment, $postId)
+    function reportUpdate($author, $comment, $postId) // Modifie un commentaire signalé (update de la BDD)
     {
         $reportManage = new ReportManage();
         $updateReport = $reportManage->updateReport($author, $comment, $postId);
@@ -123,7 +122,7 @@ class BackendController
         exit;
     }
     
-    function deleteComment($commentId)
+    function deleteComment($commentId)  // Supprime un commentaire signalé de la BDD
     {
         $deleteCommentManage = new ReportManage();
         $commentDelete = $deleteCommentManage->deleteComment($commentId);
@@ -132,7 +131,7 @@ class BackendController
         exit;
     }
     
-    function sessionStop()
+    function sessionStop() // Supprime la session lors de la deconnexion de l'Admin
     {
         session_destroy();
         

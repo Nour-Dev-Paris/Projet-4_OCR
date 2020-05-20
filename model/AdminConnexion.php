@@ -4,7 +4,7 @@ namespace Projet4\model;
 
 require_once('..\Projet4\model\Manager.php');
 
-class AdminConnexion extends Manager
+class AdminConnexion extends Manager // Récupère les ID de l'Admin dans la BDD
 {
     public function getAdminLogin() 
     {

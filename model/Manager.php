@@ -3,7 +3,7 @@
 namespace Projet4\model;
 use \PDO;
 
-class Manager
+class Manager // Connection à la BDD
 {
     protected function dbConnect()
     {

@@ -1,6 +1,6 @@
-<?php
+<?php // Controlleur gérant la partie Frontend 
      
-use \Projet4\model\Autoloader;
+use \Projet4\model\Autoloader;  // Appel des class des fichiers Modèle
 use \Projet4\model\AdminConnexion;
 use \Projet4\model\PostManage;
 use \Projet4\model\CommentManage;
@@ -17,15 +17,8 @@ class FrontendController
         require('..\Projet4\view\frontend\listTicketsView.php');
     }
     
-    function postReportView()
-    {
-        $reportManage = new ReportManage();
-        $getReportView = $reportManage->getReport($_GET['id']);  
-        
-        require('..\Projet4\view\frontend\postReport.php');
-    }
     
-    public function listPosts()
+    public function listPosts() // Affiche la page d'accueil avec les articles crées
     {
         $postManager = new PostManage();
         $posts = $postManager->getPosts();
@@ -33,7 +26,7 @@ class FrontendController
         require('..\Projet4\view\frontend\listTicketsView.php');
     }
     
-    function post()
+    function post() // Affiche la page d'un article avec les commentaires liées
     {
         $postManage = new PostManage();
         $commentManage = new CommentManage();
@@ -43,7 +36,6 @@ class FrontendController
         
         require('..\Projet4\view\frontend\postView.php');
         exit;
-        return $post;
     }
     
     function addComment($postId, $author, $comment)
@@ -60,7 +52,8 @@ class FrontendController
         }
     }
     
-    function postReport($commentId)
+    
+    function postReport($commentId) //Permet le signalement d'un commentaire
     {
         $reportManage = new ReportManage();
         
@@ -68,5 +61,13 @@ class FrontendController
         
         header('Location: index.php?action=postReportView&id=' . $commentId . '&report=success');
         exit;
+    }
+
+    function postReportView() // Message de confirmation d'un commentaire signalé
+    {
+        $reportManage = new ReportManage();
+        $getReportView = $reportManage->getReport($_GET['id']);  
+        
+        require('..\Projet4\view\frontend\postReport.php');
     }
 }

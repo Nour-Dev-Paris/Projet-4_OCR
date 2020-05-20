@@ -1,4 +1,4 @@
-<?php 
+<?php // Routeur - Gestion des requêtes - Appel du bon Controlleur
 
 session_start();
 
@@ -7,7 +7,7 @@ require('..\Projet4\controller\backend.php');
 
 try 
 {
-    if(isset($_GET['action'])) {
+    if(isset($_GET['action'])) { 
         if($_GET['action'] == 'loginAdmin') {
             $adminLogin = new BackendController();
             $admin = $adminLogin->loginAdmin();
