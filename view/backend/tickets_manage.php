@@ -24,8 +24,9 @@
             <p>
                 <a class="link_update" href="index.php?action=updatePostView&amp;id=<?= $data['id']; ?>"><?= $data['title']; ?></a>
             </p>
+            
             <p>
-                <a class="button_removePost" href="index.php?action=deletePost&amp;id=<?= $data['id']; ?>">Effacer</a>
+                <a class="button_removePost" href="index.php?action=deletePostView&amp;id=<?= $data['id']; ?>">Effacer</a>
             </p><br>
             
             <p>

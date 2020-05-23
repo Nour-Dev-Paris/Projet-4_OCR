@@ -89,6 +89,14 @@ class BackendController
         exit;
     }
     
+    function DeleteTicketSubmit() // Amène à la page de confirmation de suppression d'un article
+    {
+        $postManage = new PostManage();
+        $post = $postManage->getPost($_GET['id']);
+        
+        require('..\Projet4\view\backend\delete_ticket.php');
+    }
+    
     function deletePost($postId) // Supprime un article de la BDD
     {
         $deletePostManage = new PostManage();
@@ -106,6 +114,13 @@ class BackendController
         require('..\Projet4\view\backend\update_report.php');
     }
     
+    function getReports()
+    {
+        $getReportsView = new ReportManage();
+        $reportsView = $getReportsView->getReports();
+        return $reportsView;
+    }
+    
     function reportUpdate($author, $comment, $postId) // Modifie un commentaire signalé (update de la BDD)
     {
         $reportManage = new ReportManage();
@@ -113,6 +128,14 @@ class BackendController
         
         header('Location: index.php?action=commentManageView&update-post=success');
         exit;
+    }
+    
+    function deleteCommentView() // Amène à la page de confirmation de suppression de commentaire
+    {
+        $deleteCommentView = new ReportManage();
+        $getCommentView = $deleteCommentView->getReport($_GET['id']);
+        
+        require('..\Projet4\view\backend\delete_comment.php');
     }
     
     function deleteComment($commentId)  // Supprime un commentaire signalé de la BDD

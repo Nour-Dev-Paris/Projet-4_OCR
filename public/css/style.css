@@ -234,6 +234,16 @@ footer a
     margin-top:20px;
 }
 
+.report_ticket
+{
+    font-size: 1.4em !important;
+    margin-bottom: 5%;
+}
+
+.delete_view
+{
+    margin: 3%;
+}
 /*COMMENT*/
 
 .comment
