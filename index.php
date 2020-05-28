@@ -5,11 +5,15 @@ session_start();
 require('..\Projet4\controller\frontend.php');
 require('..\Projet4\controller\backend.php');
 
-
 try 
 {
     if(isset($_GET['action'])) {
-        if($_GET['action'] == 'loginAdmin') {
+        if ($_GET['action'] == 'homePage') {
+                $pageHome = new FrontendController();
+                $home = $pageHome->homePage();
+                return $home;
+        }
+        elseif ($_GET['action'] == 'loginAdmin') {
             $adminLogin = new BackendController();
             $admin = $adminLogin->loginAdmin();
             return $admin;
@@ -22,6 +26,21 @@ try
                 return $viewPost;
             }
         }
+        elseif($_GET['action'] == 'addComment') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                if (!empty($_POST['author']) && !empty($_POST['comment'])) {
+                    $addComment = new FrontendController();
+                    $addComment->addComment($_GET['id'], $_POST['author'], $_POST['comment']);
+                }
+                else {
+                    throw new Exception('Tous les champs ne sont pas remplis');
+                }
+            }
+        }
+        elseif ($_GET['action'] == 'report') {
+            $reportComment = new FrontendController();
+			$reportComment->postReport($_GET['id'], $_GET['comment_id']);
+		}
         elseif ($_GET['action'] == 'postReportView') {
                 $postReportView = new FrontendController();
                 $reportView = $postReportView->postReportView();
@@ -31,39 +50,27 @@ try
                     $postReportView = new FrontendController();
                 $reportView = $postReportView->postReportView();
                 } else {
-                    echo 'aucun identifiant de commentaire trouvé';
+                    throw new Exception('Aucun identifiant de commentaire envoyé');
                 }
         }
-        elseif ($_GET['action'] == 'homePage') {
-                $pageHome = new FrontendController();
-                $home = $pageHome->homePage();
-                return $home;
-        }
-        elseif($_GET['action'] == 'addComment') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                if (!empty($_POST['author']) && !empty($_POST['comment'])) {
-                    $addComment = new FrontendController();
-                    $addComment->addComment($_GET['id'], $_POST['author'], $_POST['comment']);
-                }
-                else {
-                    echo 'Erreur tous les champs ne sont pas remplis !';
-                }
-            }
-        }
-        elseif ($_GET['action'] == 'report') {
-            $reportComment = new FrontendController();
-			$reportComment->postReport($_GET['id'], $_GET['comment_id']);
-		}
         elseif (isset($_SESSION) && $_SESSION['id'] == '1') {
-            if($_GET['action'] == 'loginAdmin') {
-            $adminLogin = new BackendController();
-            $admin = $adminLogin->loginAdmin();
-            return $admin;
-            }
-            elseif($_GET['action'] == 'createPost') {
+            
+            if($_GET['action'] == 'createPost') {
                 $postCreate = new BackendController();
                 $post = $postCreate->createPost();
                 return $post;
+            }
+            elseif ($_GET['action'] == 'postAdmin') {
+
+                if (!empty($_POST['title']) && !empty($_POST['content'])) {
+
+                    $submitPostAdmin = new BackendController();
+                    $submitPostAdmin->newPost($_POST['title'], $_POST['content']);
+                }
+                else {
+
+                    throw new Exception('Tous les champs ne sont pas remplis');
+                }
             }
             elseif($_GET['action'] == 'updateView') {
                 $updateView = new BackendController();
@@ -76,7 +83,7 @@ try
                     $updatePostView = new BackendController();
                     $viewUpdatePost = $updatePostView->submitUpdateView();
                 } else {
-                    echo 'aucun identifiant de billet trouvé';
+                    throw new Exception('Aucun identifiant de billet envoyé');
                 }
             }
             elseif($_GET['action'] == 'updatePost') {
@@ -104,18 +111,6 @@ try
                 $return = $adminReturn->adminView();
                 return $return;
             }
-            elseif ($_GET['action'] == 'postAdmin') {
-
-                if (!empty($_POST['title']) && !empty($_POST['content'])) {
-
-                    $submitPostAdmin = new BackendController();
-                    $submitPostAdmin->newPost($_POST['title'], $_POST['content']);
-                }
-                else {
-
-                    echo 'Erreur : tous les champs ne sont pas remplis !';
-                }
-            }
             elseif($_GET['action'] == 'commentManageView') {
                 $commentViewManage = new BackendController();
                 $commentView = $commentViewManage->commentManageView();
@@ -127,7 +122,7 @@ try
                     $updateReportView = new BackendController();
                     $viewUpdateReport = $updateReportView->submitReportView();
                 } else {
-                    echo 'aucun identifiant de commentaire trouvé';
+                    throw new Exception('Aucun identifiant de commentaire envoyé');
                 }
             }
             elseif($_GET['action'] == 'updateReport') {

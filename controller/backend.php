@@ -36,7 +36,6 @@ class BackendController
             sleep(2);
             
             header('Location: index.php?action=homePage');
-            exit;
         }
      } 
      

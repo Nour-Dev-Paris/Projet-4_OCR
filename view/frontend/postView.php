@@ -2,43 +2,51 @@
 
 <?php ob_start(); ?>
     <div class="container home_header text-center">
-        <div class="heading col-sm-4 col-md-6 col-lg-6">
-            <h1>Billet Simple pour l'Alaska</h1>
-            <h2>Jean Forteroche</h2>
-            <p>Une nouvelle manière de lire</p>
-        </div>
-            
-        <div class="col-sm-4 col-md-6 col-lg-6 block">
-            <p class="p-info title_co">Connexion administrateur</p>
-            <form action="/index.php?action=loginAdmin" method="post" class="form">
-                <div class="form-group has-error">
-                    <label for="identifiant">Identifiant</label>
-                    <input type="text" name="identifiant" id="identifiant" class="form-control"/><br>
-                </div> 
-                <div class="form-group has-error">
-                    <label for="pass">Mot de passe</label>
-                    <input type="password" name="pass" id="pass" class="form-control"/><br>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Connexion" class="btn btn-primary"/>
-                </div>
-            </form>
+        <div class="row">
+            <div class="heading col-sm-4 col-md-6 col-lg-6">
+                <h1>Billet Simple pour l'Alaska</h1>
+                <h2>Jean Forteroche</h2>
+                <p>Une nouvelle manière de lire</p>
+            </div>
+
+            <div class="col-sm-4 col-md-6 col-lg-6 block">
+                <p class="p-info title_co">Connexion administrateur</p>
+                <form action="/index.php?action=loginAdmin" method="post" class="form">
+                    <div class="form-group has-error">
+                        <label for="identifiant">Identifiant</label>
+                        <input type="text" name="identifiant" id="identifiant" class="form-control"/><br>
+                    </div> 
+                    <div class="form-group has-error">
+                        <label for="pass">Mot de passe</label>
+                        <input type="password" name="pass" id="pass" class="form-control"/><br>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Connexion" class="btn btn-primary"/>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 
-    <p class="return_home"><a href="/index.php?action=homePage">Retour à la page d'accueil</a></p>
+    <div class="container">
+        <p class="return_home"><a href="/index.php?action=homePage">Retour à la page d'accueil</a></p>
+    </div>
 
-    <div class="news">
-        <div class="title_post_admin">
-            <h3 class="title_chap">
-                <?= htmlspecialchars($post['title']) ?>
-            </h3>
-            <div class="text_admin">
-                <p>
-                    <?= ($post['content']) ?>
-                </p>
+    <div class="container">
+        <div class="row">
+            <div class="news text-center col-sm-12 col-md-8">
+                <div class="title_post_admin">
+                    <h3 class="title_chap">
+                        <?= htmlspecialchars($post['title']) ?>
+                    </h3>
+                    <div class="text_admin">
+                        <p>
+                            <?= ($post['content']) ?>
+                        </p>
+                    </div>
+                </div>    
             </div>
-        </div>    
+        </div>
     </div>
 
     <div class="comment">
@@ -62,9 +70,10 @@
 {
 ?>
     <div class="comment_view">
-        <p class="comment_style"><strong><?= $comment['author'] ?></strong><br> <em class="date_comment">le <?= $comment['comment_date_fr'] ?></em></p>
+        <p class="comment_style post_comment_author"><strong><?= $comment['author'] ?></strong><br> <em class="date_comment">le <?= $comment['comment_date_fr'] ?></em></p>
         <div class="line_style"></div>
-        <p class="comment_style"><?= $comment['comment'] ?></p>
+        <p class="comment_style post_comment_content"><?= $comment['comment'] ?></p>
+        <div class="line_style_down"></div>
         <p class="signal_com"><a href="index.php?action=report&amp;id=<?= $comment['id'] ?>&amp;comment_id=<?= $post['id'] ?>">Signaler</a></p>
     </div>
 

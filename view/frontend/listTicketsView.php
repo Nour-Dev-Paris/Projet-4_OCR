@@ -36,19 +36,23 @@
 {
 ?>
 
-    <div class="news">
-        <div class="title_post_admin">
-            <h3 class="title_chap">
-                <?= ($data['title']) ?>
-            </h3>
-            <em class="date_em">le <?= $data['creation_date_fr'] ?></em>
-            <div class="text_admin">
-                <p class="text_content_admin">
-                    <?= ($data['content']) ?><br />
-                    <em class="com_em"><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a></em>
-                </p>
+    <div class="container">
+        <div class="row">
+            <div class="news text-center col-sm-12 col-md-8">
+                <div class="title_post_admin">
+                    <h3 class="title_chap">
+                        <?= htmlspecialchars($data['title']) ?>
+                    </h3>
+                    <em class="date_em">le <?= $data['creation_date_fr'] ?></em>
+                    <div class="text_admin">
+                        <p class="text_content_admin">
+                            <?= ($data['content']) ?><br />
+                            <em class="com_em"><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a></em>
+                        </p>
+                    </div>
+                </div>    
             </div>
-        </div>    
+        </div>
     </div>
 
 <?php
